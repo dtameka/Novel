@@ -376,8 +376,8 @@ screen main_menu():
                 style "main_menu_version"
 
 
-    imagemap:
-        ground
+    #imagemap:
+        #ground
     
 
 
