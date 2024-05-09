@@ -1,22 +1,14 @@
-﻿# Вы можете расположить сценарий своей игры в этом файле.
+﻿label start:
+    with Fade(0.5, 0.5, 0.5)
+ 
+    $ mouse_parallax.set((-20, -5, "l0"), (-40, -10, "l1"))
+    $ showp("stars back", "stars front")
+    with eyeopen
 
-# Определение персонажей игры.
-define e = Character('Эйлин', color="#c8ffc8")
+    main_character """
+    смартфон vivo смартфон vivo смартфон vivo смартфон vivo смартфон vivo смартфон vivo
 
-# Вместо использования оператора image можете просто
-# складывать все ваши файлы изображений в папку images.
-# Например, сцену bg room можно вызвать файлом "bg room.png",
-# а eileen happy — "eileen happy.webp", и тогда они появятся в игре.
-
-# Игра начинается здесь:
-label start:
-
-    scene bg room
-
-    show eileen happy
-
-    e "Вы создали новую игру Ren'Py."
-
-    e "Добавьте сюжет, изображения и музыку и отправьте её в мир!"
-
+    смартфон vivoсмартфон vivoсмартфон vivoсмартфон vivoсмартфон vivo
+    """
+   
     return
