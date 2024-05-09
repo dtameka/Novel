@@ -5,3 +5,4 @@
 #### [Подсветка говорящего](https://wattson.itch.io/renpy-auto-highlight)
 #### [Шейдеры](https://remort-studios.itch.io/make-visual-novels-rspv1)
 #### [Партиклы](https://tofurocks.itch.io/snowfall-gui)
+#### [Паралакс](https://renpyfordummies.blogspot.com/2018/08/blog-post.html)
