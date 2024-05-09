@@ -2,3 +2,7 @@
 *.rpyc
 *.rpyb
 *.rpymc
+*.save
+persistent
+*.json
+*.webp
