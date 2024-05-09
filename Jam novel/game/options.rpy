@@ -92,6 +92,8 @@ define config.after_load_transition = None
 define config.end_game_transition = None
 
 
+
+
 ## Переменная, устанавливающая переход, когда старт игры не существует. Вместо
 ## неё используйте функцию with после показа начальной сценки.
 
