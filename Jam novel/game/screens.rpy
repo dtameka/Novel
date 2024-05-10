@@ -348,14 +348,15 @@ style navigation_button_text:
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#main-menu
 
+
 screen main_menu():
 
     ## Этот тег гарантирует, что любой другой экран с тем же тегом будет
     ## заменять этот.
     tag menu
 
-    add gui.main_menu_background
 
+<<<<<<< HEAD
     ## Эта пустая рамка затеняет главное меню.
     frame:
         style "main_menu_frame"
@@ -378,8 +379,29 @@ screen main_menu():
 
     #imagemap:
         #ground
+=======
+    # Параллакс эффект для главного меню
+    add TrackCursor("gui/main_menu_l2.png", 180)
+    add TrackCursor("gui/main_menu_l1.png", 156)
+    add TrackCursor("gui/main_menu_l0.png", 60)
+    
+>>>>>>> dev_daniilvs
     
 
+    # add gui.main_menu_background
+
+
+    # Мапа для кастомного главного меню
+    imagemap:
+        idle "gui/menu_idle.png"
+        hover "gui/menu_hover.png"
+
+        hotspot(158, 210, 313, 56) action Start()
+        hotspot(158, 361, 313, 56) action ShowMenu("load")
+        hotspot(158, 512, 313, 56) action ShowMenu("about")
+        hotspot(158, 663, 313, 56) action ShowMenu("help")
+        hotspot(158, 814, 313, 56) action Quit(confirm=True)
+  
 
 style main_menu_frame is empty
 style main_menu_vbox is vbox
@@ -391,7 +413,6 @@ style main_menu_frame:
     xsize 420
     yfill True
 
-    background "gui/overlay/main_menu.png"
 
 style main_menu_vbox:
     xalign 1.0
@@ -423,10 +444,14 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
 
     style_prefix "game_menu"
 
-    if main_menu:
-        add gui.main_menu_background
-    else:
-        add gui.game_menu_background
+    # if main_menu:
+    #     add gui.main_menu_background
+    # else:
+    #     add gui.game_menu_background
+
+    add TrackCursor("gui/main_menu_l0.png", 60)
+    add TrackCursor("gui/main_menu_l1.png", 156)
+    add gui.main_menu_background
 
     frame:
         style "game_menu_outer_frame"
@@ -484,7 +509,7 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
 
         action Return()
 
-    label title
+    # label title
 
     if main_menu:
         key "game_menu" action ShowMenu("main_menu")
