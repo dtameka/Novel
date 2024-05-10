@@ -36,3 +36,10 @@ init:
             "hand ticket_light_on"
         attribute jelly:
             "jelly animated"
+
+    transform offscreendown:
+        ypos 0.8
+        xpos 0
+
+    transform default_hand_sposition:
+        ypos -0.4 rotate 0.0
