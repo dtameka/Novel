@@ -1311,7 +1311,7 @@ screen nvl(dialogue, items=None):
         has vbox:
             spacing gui.nvl_spacing
 
-        ## Показывает диалог или в vpgrid, или в vbox.
+        ## Displays dialogue in either a vpgrid or the vbox.
         if gui.nvl_height:
 
             vpgrid:
@@ -1324,8 +1324,8 @@ screen nvl(dialogue, items=None):
 
             use nvl_dialogue(dialogue)
 
-        ## Показывает меню, если есть. Меню может показываться некорректно, если
-        ## config.narrator_menu установлено на True.
+        ## Displays the menu, if given. The menu may be displayed incorrectly if
+        ## config.narrator_menu is set to True, as it is above.
         for i in items:
 
             textbutton i.caption:

@@ -110,6 +110,8 @@ define config.end_game_transition = dissolve
 
 define config.window = "auto"
 
+#define config.empty_window = nvl_show_core
+
 
 ## Переходы, используемые при показе и скрытии диалогового окна
 
