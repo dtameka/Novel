@@ -356,36 +356,11 @@ screen main_menu():
     tag menu
 
 
-<<<<<<< HEAD
-    ## Эта пустая рамка затеняет главное меню.
-    frame:
-        style "main_menu_frame"
-
-    ## Оператор use включает отображение другого экрана в данном. Актуальное
-    ## содержание главного меню находится на экране навигации.
-    use navigation
-
-    if gui.show_name:
-
-        vbox:
-            style "main_menu_vbox"
-
-            text "[config.name!t]":
-                style "main_menu_title"
-
-            text "[config.version]":
-                style "main_menu_version"
-
-
-    #imagemap:
-        #ground
-=======
     # Параллакс эффект для главного меню
     add TrackCursor("gui/main_menu_l2.png", 180)
     add TrackCursor("gui/main_menu_l1.png", 156)
     add TrackCursor("gui/main_menu_l0.png", 60)
     
->>>>>>> dev_daniilvs
     
 
     # add gui.main_menu_background
