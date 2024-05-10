@@ -355,10 +355,22 @@ screen main_menu():
     ## заменять этот.
     tag menu
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> fbfe41acd04f4e3847c9beb5d10e5341e20c546f
     # Параллакс эффект для главного меню
     add TrackCursor("gui/main_menu_l2.png", 180)
     add TrackCursor("gui/main_menu_l1.png", 156)
     add TrackCursor("gui/main_menu_l0.png", 60)
+<<<<<<< HEAD
+=======
+    
+    
+
+    # add gui.main_menu_background
+
+>>>>>>> fbfe41acd04f4e3847c9beb5d10e5341e20c546f
 
     # Мапа для кастомного главного меню
     imagemap:
