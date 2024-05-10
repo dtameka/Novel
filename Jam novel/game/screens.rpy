@@ -356,20 +356,22 @@ screen main_menu():
     tag menu
 
     # Параллакс эффект для главного меню
-    add TrackCursor("gui/main_menu_l2.png", 180)
-    add TrackCursor("gui/main_menu_l1.png", 156)
-    add TrackCursor("gui/main_menu_l0.png", 60)
+    add TrackCursor("gui/main_menu_l0.png", 160)
+    add TrackCursor("gui/main_menu_l1.png", 140)
+    add TrackCursor("gui/main_menu_l2.png", 120)
+
+    add gui.main_menu_background
     
     # Мапа для кастомного главного меню
     imagemap:
         idle "gui/menu_idle.png"
         hover "gui/menu_hover.png"
 
-        hotspot(158, 210, 313, 56) action Start()
-        hotspot(158, 361, 313, 56) action ShowMenu("load")
-        hotspot(158, 512, 313, 56) action ShowMenu("about")
-        hotspot(158, 663, 313, 56) action ShowMenu("help")
-        hotspot(158, 814, 313, 56) action Quit(confirm=True)
+        hotspot(515, 304, 200, 77) action Start()
+        hotspot(533, 381, 214, 73) action ShowMenu("load")
+        hotspot(557, 461, 183, 73) action ShowMenu("about")
+        hotspot(571, 538, 242, 72) action ShowMenu("help")
+        hotspot(170, 517, 152, 143) action Quit(confirm=True)
   
 
 style main_menu_frame is empty
@@ -413,13 +415,11 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
 
     style_prefix "game_menu"
 
-    # if main_menu:
-    #     add gui.main_menu_background
-    # else:
-    #     add gui.game_menu_background
+    # Параллакс эффект для быстрого меню
+    add TrackCursor("gui/main_menu_l0.png", 160)
+    add TrackCursor("gui/main_menu_l1.png", 140)
+    add TrackCursor("gui/main_menu_l2.png", 120)
 
-    add TrackCursor("gui/main_menu_l0.png", 60)
-    add TrackCursor("gui/main_menu_l1.png", 156)
     add gui.main_menu_background
 
     frame:

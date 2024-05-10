@@ -124,4 +124,4 @@ init 1111 python:
         if args:
             showp(*args)
 
-    mouse_parallax = MouseParallax((-60, -15, "l0"), (-40, -10, "l1"), (-20, -5, "l2"))
+    mouse_parallax = MouseParallax((-60, -15, "l0"), (-40, -10, "l1"), (-20, -5, "l2") , (-20, -5, "l3"),  (-20, -5, "l4"))

@@ -25,8 +25,8 @@ label brief: # Бриф
     '''
 
     $ scenep()
-    show bg antenna_l0
-    $ showp("bg antenna_l1", "bg antenna_l2", "bg antenna_l3", "bg antenna_l4") 
+    $ mouse_parallax.set((-2, -5, "l0"), (-4, -5, "l1"), (-8, -5, "l2"), (-12, -5, "l3"), (-17, -5, "l4"))
+    $ showp("bg antenna_l0", "bg antenna_l1", "bg antenna_l2", "bg antenna_l3", "bg antenna_l4") 
     with ImageDissolve("transitions/wet.webp", 4.0, 80)
     
     '''
@@ -36,8 +36,10 @@ label brief: # Бриф
 
     {fi=[0]-[2]-[0]}И нас услышали…{/fi}
     '''
+
     $ scenep()
-    $ showp("bg ship_jellyfish") 
+    $ mouse_parallax.set((0, 0, "l0"), (-20, -10, "l1"), (0, 0, "l2"))
+    $ showp("bg ship_l0", "bg stars_l2", "bg ship_l1") 
     with ImageDissolve("transitions/wet.webp", 4.0, 80)
     
     '''
@@ -83,7 +85,6 @@ label prologue_01: # Пробуждение
                     $ scenep()
                     $ showp(("hand jelly", offscreendown))
 
-                    
                     window auto hide
                     show hand jelly onlayer l0:
                         subpixel True 
@@ -93,8 +94,6 @@ label prologue_01: # Пробуждение
                     show hand jelly onlayer l0:
                         ypos -0.4 rotate 0.0 
                     window auto show
-
-
 
                     with dissolve
                     player_base "{fi=[0]-[1]-[0]}Кажется я начинаю вспоминать...{/fi}"

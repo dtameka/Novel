@@ -1,6 +1,6 @@
 init:
     #Define characters 
-    define player_base = Character("Антон", color="#5efbba", image='', callback=name_callback, cb_name='anton')
+    define player_base = Character("Кир", color="#5efbba", image='', callback=name_callback, cb_name='anton')
     define narrator_base = Character(name=None, kind=nvl)
     define elis_base = Character("Элис", color="#5efbba", image='', callback=name_callback, cb_name='elis')
     # Image персонажей
