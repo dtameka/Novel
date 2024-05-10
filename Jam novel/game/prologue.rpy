@@ -207,17 +207,16 @@ label prologue_02:
                 $ check_pockets = True
             "Осмотреться":
                 $ exit = True
-                $ check_ticket = False
                 $ renpy.block_rollback()
-
-                window auto hide
-                show hand jelly onlayer l0:
-                    subpixel True
-                    ypos -0.4 rotate 0.0
-                    ease 2.05 ypos 0.9 rotate -90.0
-                with Pause(2.16)
-                show hand jelly onlayer l0:
-                    ypos 0.8 rotate 0.0
+                if not check_pockets:
+                    window auto hide
+                    show hand jelly onlayer l0 :
+                        subpixel True
+                        ypos -0.4 rotate 0.0
+                        ease 2.05 ypos 0.9 rotate -90.0
+                    with Pause(2.16)
+                    show hand jelly onlayer l0:
+                        ypos 0.8 rotate 0.0
 
                 '''
                 Это определённо морг. Не знаю, был ли я здесь раньше - я не помню, голова {glitch=10}трещит…{/glitch}
