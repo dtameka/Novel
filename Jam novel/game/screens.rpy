@@ -357,34 +357,13 @@ screen main_menu():
 
 
     # Параллакс эффект для главного меню
-    add TrackCursor("gui/main_menu_l0.png", 60)
+    add TrackCursor("gui/main_menu_l2.png", 180)
     add TrackCursor("gui/main_menu_l1.png", 156)
-    # add TrackCursor("gui/main_menu_l2.png", 20)
+    add TrackCursor("gui/main_menu_l0.png", 60)
+    
+    
 
-    add gui.main_menu_background
-
-    # $ mouse_parallax.set((-10, -5, "l0"), (-20, -5, "l1"), (-156, -10, "l2"))
-    # $ showp("main menu_l0.png", "main menu_l1.png", "main menu_l2.png") 
-
-
-    ## Эта пустая рамка затеняет главное меню.
-    # frame:
-    #     style "main_menu_frame"
-
-    # ## Оператор use включает отображение другого экрана в данном. Актуальное
-    # ## содержание главного меню находится на экране навигации.
-    # use navigation
-
-    # if gui.show_name:
-
-    #     vbox:
-    #         style "main_menu_vbox"
-
-    #         text "[config.name!t]":
-    #             style "main_menu_title"
-
-    #         text "[config.version]":
-    #             style "main_menu_version"
+    # add gui.main_menu_background
 
 
     # Мапа для кастомного главного меню
