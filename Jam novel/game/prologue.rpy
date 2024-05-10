@@ -50,7 +50,6 @@ label brief: # Бриф
     #stop music fadeout 2.0
     $ scenep()
 
-    
 
 label prologue_01: # Пробуждение
     with ImageDissolve("transitions/01.webp", 4.0, 50)
@@ -82,7 +81,21 @@ label prologue_01: # Пробуждение
                 if light_on:                  
                     "Вы достаете какой-то билет"
                     $ scenep()
-                    $ showp("hand jelly")
+                    $ showp(("hand jelly", offscreendown))
+
+                    
+                    window auto hide
+                    show hand jelly onlayer l0:
+                        subpixel True 
+                        ypos 0.8 rotate -90.0
+                        ease 2.05 ypos -0.4 rotate 0
+                    with Pause(2.16)
+                    show hand jelly onlayer l0:
+                        ypos -0.4 rotate 0.0 
+                    window auto show
+
+
+
                     with dissolve
                     player_base "{fi=[0]-[1]-[0]}Кажется я начинаю вспоминать...{/fi}"
                     player_base "Точно!" with vpunch
@@ -166,10 +179,12 @@ label prologue_flashback: # Воспоминания о том как приле
     
 
 label prologue_02:
+
     scene bg morgue_light with ImageDissolve("transitions/005.webp", 7.0, 80)
+
     show dust_left
     show dust_right
-    $ showp("hand jelly")
+    $ showp(("hand jelly", default_hand_sposition))
     "{cps=30}Но всё же мне ещё непонятно как я оказался здесь…{/cps}" with dissolve
 
 
@@ -180,6 +195,16 @@ label prologue_02:
             "Проверить карманы" if not check_pockets:
                 $ renpy.block_rollback()
                 "В карманах теперь пусто, положу пока билет обратно в жилетку"
+
+                window auto hide
+                show hand jelly onlayer l0:
+                    subpixel True
+                    ypos -0.4 rotate 0.0
+                    ease 2.05 ypos 0.8 rotate -90.0
+                with Pause(2.16)
+                show hand jelly onlayer l0:
+                    ypos 0.8 rotate 0.0
+
                 $ scenep()
                 with dissolve
                 $ check_pockets = True
@@ -187,4 +212,18 @@ label prologue_02:
                 $ exit = True
                 $ check_ticket = False
                 $ renpy.block_rollback()
-                "Это определённо морг. Не знаю, был ли я здесь раньше - я не помню, голова трещит… Что это там..."
+
+                '''
+                Это определённо морг. Не знаю, был ли я здесь раньше - я не помню, голова {glitch=10}трещит…{/glitch}
+
+                Что это там? Кажется в каталке что-то блестит...
+
+                Вы подходите к каталке и наблюдаете, что металический блеск исходил от скальпеля.
+                '''
+
+                player_base "Возьму его пожалуй, вдруг пригодиться. Пускай лежит в ближнем кармане"
+
+                '''
+                Уберу пока его ближний карман.
+                '''
+
