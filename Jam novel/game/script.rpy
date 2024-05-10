@@ -1,5 +1,3 @@
-﻿
-
-label start:
+﻿label start:
     jump brief
 
