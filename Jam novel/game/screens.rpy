@@ -356,11 +356,36 @@ screen main_menu():
     tag menu
 
 
+<<<<<<< HEAD
+    ## Эта пустая рамка затеняет главное меню.
+    frame:
+        style "main_menu_frame"
+
+    ## Оператор use включает отображение другого экрана в данном. Актуальное
+    ## содержание главного меню находится на экране навигации.
+    use navigation
+
+    if gui.show_name:
+
+        vbox:
+            style "main_menu_vbox"
+
+            text "[config.name!t]":
+                style "main_menu_title"
+
+            text "[config.version]":
+                style "main_menu_version"
+
+
+    #imagemap:
+        #ground
+=======
     # Параллакс эффект для главного меню
     add TrackCursor("gui/main_menu_l2.png", 180)
     add TrackCursor("gui/main_menu_l1.png", 156)
     add TrackCursor("gui/main_menu_l0.png", 60)
     
+>>>>>>> dev_daniilvs
     
 
     # add gui.main_menu_background
@@ -1311,7 +1336,7 @@ screen nvl(dialogue, items=None):
         has vbox:
             spacing gui.nvl_spacing
 
-        ## Показывает диалог или в vpgrid, или в vbox.
+        ## Displays dialogue in either a vpgrid or the vbox.
         if gui.nvl_height:
 
             vpgrid:
@@ -1324,8 +1349,8 @@ screen nvl(dialogue, items=None):
 
             use nvl_dialogue(dialogue)
 
-        ## Показывает меню, если есть. Меню может показываться некорректно, если
-        ## config.narrator_menu установлено на True.
+        ## Displays the menu, if given. The menu may be displayed incorrectly if
+        ## config.narrator_menu is set to True, as it is above.
         for i in items:
 
             textbutton i.caption:

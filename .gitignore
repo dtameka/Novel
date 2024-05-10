@@ -2,6 +2,12 @@
 *.rpyc
 *.rpyb
 *.rpymc
+<<<<<<< HEAD
+*.save
+persistent
+*.json
+=======
 .vscode
 saves/
 *.webp
+>>>>>>> dev_daniilvs
