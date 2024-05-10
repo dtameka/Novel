@@ -82,7 +82,7 @@ label prologue_01: # Пробуждение
                 if light_on:                  
                     "Вы достаете какой-то билет"
                     $ scenep()
-                    $ showp("hand ticket_light_on")
+                    $ showp("hand jelly")
                     with dissolve
                     player_base "{fi=[0]-[1]-[0]}Кажется я начинаю вспоминать...{/fi}"
                     player_base "Точно!" with vpunch
@@ -169,7 +169,7 @@ label prologue_02:
     scene bg morgue_light with ImageDissolve("transitions/005.webp", 7.0, 80)
     show dust_left
     show dust_right
-    $ showp("hand ticket_light_on")
+    $ showp("hand jelly")
     "{cps=30}Но всё же мне ещё непонятно как я оказался здесь…{/cps}" with dissolve
 
 

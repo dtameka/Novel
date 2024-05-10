@@ -21,3 +21,18 @@ init:
     #image dust2 = Fixed(SnowBlossom("images/dust1_p.png", 5, xspeed=-50, yspeed=-10, start=50, horizontal=False, fast=True))
     image dust_right = Fixed(SnowBlossom("images/particles/dust_white.png", 120, xspeed=10, yspeed=-10, start=50, horizontal=True, fast=True))
     image dust_left = Fixed(SnowBlossom("images/particles/dust_white.png", 120, xspeed=-10, yspeed=-10, start=50, horizontal=True, fast=True))
+
+    image jelly animated:
+        "jelly1"
+        pause 0.5
+        "jelly2"
+        pause 0.5
+        "jelly3"
+        pause 0.5
+        repeat
+
+    layeredimage hand:
+        always:
+            "hand ticket_light_on"
+        attribute jelly:
+            "jelly animated"
