@@ -94,7 +94,7 @@ style frame:
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#say
 
-screen say(who, what, slow_effect = slow_typewriter, slow_effect_delay = 0, always_effect = None):
+screen say(who, what):
     style_prefix "say"
 
     window:

@@ -13,3 +13,6 @@ init:
     image player = At('image_base', sprite_highlight('anton'))
     image narrator = At('image_base', sprite_highlight('narrator'))
     image elis = At('image_base', sprite_highlight('elis'))
+
+    # Music
+    define audio.myambient = "music/ambient.mp3"
