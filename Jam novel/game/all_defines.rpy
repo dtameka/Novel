@@ -37,9 +37,25 @@ init:
         attribute jelly:
             "jelly animated"
 
+    image scalpel_blink animated:
+        "scalpel blink"
+        pause 0.5
+
+        repeat
+
+    layeredimage katalka_with_blink_scalpel:
+        always:
+            "bg katalka_with_scalpel"
+        attribute blink:
+            "scalpel_blink animated"
+
     # Transoforms
     transform offscreendown:
         ypos 0.8
+        xpos 0
+
+    transform offscreendown_end:
+        ypos 0.9
         xpos 0
 
     transform default_hand_sposition:

@@ -3,7 +3,7 @@ label brief: # Бриф
 
     $ mouse_parallax.set((-10, -5, "l0"), (-20, -5, "l1"), (-40, -10, "l2"))
     $ showp("bg stars_l0", "bg stars_l1", "bg stars_l2") 
-    #with eyeopen
+    with eyeopen
     #play music myambient fadein 1.0
 
     '''
@@ -83,7 +83,6 @@ label prologue_01: # Пробуждение
                     $ scenep()
                     $ showp(("hand jelly", offscreendown))
 
-                    
                     window auto hide
                     show hand jelly onlayer l0:
                         subpixel True 
@@ -93,8 +92,6 @@ label prologue_01: # Пробуждение
                     show hand jelly onlayer l0:
                         ypos -0.4 rotate 0.0 
                     window auto show
-
-
 
                     with dissolve
                     player_base "{fi=[0]-[1]-[0]}Кажется я начинаю вспоминать...{/fi}"
@@ -213,20 +210,56 @@ label prologue_02:
                 $ check_ticket = False
                 $ renpy.block_rollback()
 
+                window auto hide
+                show hand jelly onlayer l0:
+                    subpixel True
+                    ypos -0.4 rotate 0.0
+                    ease 2.05 ypos 0.9 rotate -90.0
+                with Pause(2.16)
+                show hand jelly onlayer l0:
+                    ypos 0.8 rotate 0.0
+
                 '''
                 Это определённо морг. Не знаю, был ли я здесь раньше - я не помню, голова {glitch=10}трещит…{/glitch}
 
                 Что это там? Кажется на каталке что-то блестит...
                 '''
-                show bg katalka with dissolve
-                "Вы подходите к каталке и наблюдаете, что металический блеск исходил от скальпеля."
-                
+                show katalka_with_blink_scalpel blink with dissolve
+                # shound ШАГИ
+                "Вы подходите к каталке и наблюдаете, что металический блеск исходил от скальпеля."                 
 
-                player_base "{fi=[0]-[1]-[0]}Возьму его пожалуй, вдруг пригодиться. Пускай лежит в ближнем кармане{/fi}"
+                $ scenep()
+                $ mouse_parallax.set((-20, -10, "l0"))
+                hide bg morgue_light
+                hide dust_left
+                hide dust_right
 
-                '''
-                Уберу пока его в ближний карман.
-                '''
+                show bg katalka_without_scalpel
+
+                $ showp(("hand with_scalpel", offscreendown_end))
+
+                window auto hide
+                show hand with_scalpel onlayer l0:
+                    subpixel True 
+                    ypos 0.8 rotate -90.0
+                    ease 1.3 ypos -0.75 rotate 0
+                with Pause(1.5)
+                show hand with_scalpel onlayer l0:
+                    ypos -0.75 rotate 0.0 
+                window auto show
+
+                player_base "{fi=[0]-[1]-[0]}Возьму его, вдруг пригодиться. Пускай лежит в ближнем кармане{/fi}"
+
+                window auto hide
+                show hand with_scalpel onlayer l0:
+                    subpixel True 
+                    ypos -0.75 rotate 0.0
+                    ease 1.3 ypos 0.9 rotate -90.0
+                with Pause(1.5)
+                show hand with_scalpel onlayer l0:
+                    ypos 0.9 rotate  -90.0
+                window auto show
+
     $ q = []
     while len(q) < 2:
         menu:
@@ -240,11 +273,31 @@ label prologue_02:
                 "Вы подходите к единственной двери в помещении и решаетесь идти дальше."
             
     # Фон: светлый длинный, но заброшенный коридор, который должен нагонять не мрачняк, в надежду на возрождение 
-
-    "Перед вашим взором открывается коридор"
+    $ scenep()
+    scene bg corridor_hight with dissolve
+    "Перед вашим взором открывается коридор."
     player_base "{fi=[0]-[1]-[0]}Какой длинный коридор...{/fi}"
+    
+    window auto hide
+    camera:
+        subpixel True 
+        parallel:
+            ypos 0 
+            ease 1.21 ypos 50 
+            ease 1.15 ypos 0 
+            ease 1.25 ypos 50 
+            ease_back 1.29 ypos 0 
+        parallel:
+            zoom 1.0 
+            linear 4.91 zoom 1.1 
+    with Pause(5.01)
+    camera:
+        ypos 0 zoom 1.1 
+    window auto show
+
 
     "Вы проходите пару метров, как видите, что перед вами появляется девушка."
+    show alice
     "Ваша рука тянется к кормашку со скальпелем."
     #Появляется персонаж Элис, это участник «Сопротивления», тайной организации, которая ведет подпольную борьбу с пришельцами
 
@@ -287,8 +340,8 @@ label prologue_02:
     {fi=[0]-[0.5]-[0]}Пойдем со мной.{/fi}
 
     {fi=[0]-[0.5]-[0]}Я покажу тебе как всё устроено на нашей базе.{/fi}
-    
     '''
+    scene bg white with eyeopen
 
 
 
