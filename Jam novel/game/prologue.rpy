@@ -3,7 +3,7 @@ label brief: # Бриф
 
     $ mouse_parallax.set((-10, -5, "l0"), (-20, -5, "l1"), (-40, -10, "l2"))
     $ showp("bg stars_l0", "bg stars_l1", "bg stars_l2") 
-    #with eyeopen
+    with eyeopen
     #play music myambient fadein 1.0
 
     '''
@@ -209,20 +209,141 @@ label prologue_02:
                 $ check_pockets = True
             "Осмотреться":
                 $ exit = True
-                $ check_ticket = False
                 $ renpy.block_rollback()
+                if not check_pockets:
+                    window auto hide
+                    show hand jelly onlayer l0 :
+                        subpixel True
+                        ypos -0.4 rotate 0.0
+                        ease 2.05 ypos 0.9 rotate -90.0
+                    with Pause(2.16)
+                    show hand jelly onlayer l0:
+                        ypos 0.8 rotate 0.0
 
                 '''
                 Это определённо морг. Не знаю, был ли я здесь раньше - я не помню, голова {glitch=10}трещит…{/glitch}
 
-                Что это там? Кажется в каталке что-то блестит...
-
-                Вы подходите к каталке и наблюдаете, что металический блеск исходил от скальпеля.
+                Что это там? Кажется на каталке что-то блестит...
                 '''
+                show katalka_with_blink_scalpel blink with dissolve
+                # shound ШАГИ
+                "Вы подходите к каталке и наблюдаете, что металический блеск исходил от скальпеля."                 
 
-                player_base "Возьму его пожалуй, вдруг пригодиться. Пускай лежит в ближнем кармане"
+                $ scenep()
+                $ mouse_parallax.set((-20, -10, "l0"))
+                hide bg morgue_light
+                hide dust_left
+                hide dust_right
 
-                '''
-                Уберу пока его ближний карман.
-                '''
+                show bg katalka_without_scalpel
+
+                $ showp(("hand with_scalpel", offscreendown_end))
+
+                window auto hide
+                show hand with_scalpel onlayer l0:
+                    subpixel True 
+                    ypos 0.8 rotate -90.0
+                    ease 1.3 ypos -0.75 rotate 0
+                with Pause(1.5)
+                show hand with_scalpel onlayer l0:
+                    ypos -0.75 rotate 0.0 
+                window auto show
+
+                player_base "{fi=[0]-[1]-[0]}Возьму его, вдруг пригодиться. Пускай лежит в ближнем кармане{/fi}"
+
+                window auto hide
+                show hand with_scalpel onlayer l0:
+                    subpixel True 
+                    ypos -0.75 rotate 0.0
+                    ease 1.3 ypos 0.9 rotate -90.0
+                with Pause(1.5)
+                show hand with_scalpel onlayer l0:
+                    ypos 0.9 rotate  -90.0
+                window auto show
+
+    $ q = []
+    while len(q) < 2:
+        menu:
+            "Осмотреться еще раз" if not 1 in q:
+                $ renpy.block_rollback()
+                $ q.append(1)
+                "В комнате ничего не осталось"
+            "Пойти дальше" if not 2 in q:
+                $ renpy.block_rollback()
+                $ q.append(2)
+                "Вы подходите к единственной двери в помещении и решаетесь идти дальше."
+            
+    # Фон: светлый длинный, но заброшенный коридор, который должен нагонять не мрачняк, в надежду на возрождение 
+    $ scenep()
+    scene bg corridor_hight with dissolve
+    "Перед вашим взором открывается коридор."
+    player_base "{fi=[0]-[1]-[0]}Какой длинный коридор...{/fi}"
+    
+    window auto hide
+    camera:
+        subpixel True 
+        parallel:
+            ypos 0 
+            ease 1.21 ypos 50 
+            ease 1.15 ypos 0 
+            ease 1.25 ypos 50 
+            ease_back 1.29 ypos 0 
+        parallel:
+            zoom 1.0 
+            linear 4.91 zoom 1.1 
+    with Pause(5.01)
+    camera:
+        ypos 0 zoom 1.1 
+    window auto show
+
+
+    "Вы проходите пару метров, как видите, что перед вами появляется девушка."
+    show alice
+    "Ваша рука тянется к кормашку со скальпелем."
+    #Появляется персонаж Элис, это участник «Сопротивления», тайной организации, которая ведет подпольную борьбу с пришельцами
+
+    alice_base '''
+    {fi=[0]-[0.5]-[0]}Привет, Кир, ну ты и соня. Ты что-нибудь помнишь после вчера?{/fi}
+
+    {fi=[0]-[0.5]-[0]}Бойцам сопротивления удалось вырвать тебя\nиз лап этих тварей в самый последний момент.{/fi}
+
+    {fi=[0]-[0.5]-[0]}Котомедузы почти полностью стерли твою личность.{/fi}
+    '''
+
+    player_base "{fi=[0]-[1]-[0]}Сопротивление...?{/fi}"
+
+    alice_base '''
+    {fi=[0]-[0.5]-[0]}Ооо... вижу ты совсем плох...{/fi}
+
+    {fi=[0]-[0.5]-[0]}Ну ничего, дай мне пару минут.{/fi}
+    '''
+
+    "Элис взглядом указала на скальпель в кармашке, к которому вы тянитесь последние несколько секунд..."
+
+    player_base "{fi=[0]-[1]-[0]}Ты что-то говорила про стирание личности?{/fi}"
+
+    alice_base '''
+    {fi=[0]-[0.5]-[0]}Да. Котомедузы умеют мурчать и издавать странные звуки.{/fi}
+    
+    {fi=[0]-[0.5]-[0]}Затем они начинают поглаживать человека своими\nотростками-щюпальцами по голове.{/fi}
+
+    {fi=[0]-[0.5]-[0]}После всего этого, жертва пришельца теряет все...{/fi}
+    
+    {fi=[0]-[0.5]-[0]}Память... разум...  мысли...{/fi}
+
+    {fi=[0]-[0.5]-[0]}Обычно, такой человек пропадает в их зданиях.\n
+
+    {fi=[0]-[0.5]-[0]}Мы пока не знаем зачем инопланетяне это делают,\nтак как никто ещё не видел
+    куда уводят людей,\nпосле стирания личности.{/fi}
+    '''
+
+    alice_base '''
+    {fi=[0]-[0.5]-[0]}Пойдем со мной.{/fi}
+
+    {fi=[0]-[0.5]-[0]}Я покажу тебе как всё устроено на нашей базе.{/fi}
+    '''
+    scene bg white with eyeopen
+
+
+
 
