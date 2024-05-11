@@ -2,7 +2,7 @@ init:
     #Define characters 
     define player_base = Character("Кир", color="#5efbba", image='', callback=name_callback, cb_name='kir')
     define narrator_base = Character(name=None, kind=nvl)
-    define alice_base = Character("Элис", color="#5efbba", image='vivian_base', callback=name_callback, cb_name='alice')
+    define alice_base = Character("Элис", color="#5efbba", image='alice', callback=name_callback, cb_name='alice')
     # Image персонажей
     #image hoshi_normal = "images/characters/hoshi upset.png"
     #image hoshi_smile = "images/characters/hoshi smile.png"
@@ -11,7 +11,9 @@ init:
 
     # AutoHightLight
     image player = At('image_base', sprite_highlight('kir'))
-    image alice = At('vivian_base', sprite_highlight('alice'))
+    image alice baseA = At('alice base', sprite_highlight('alice'))
+    image alice sadA = At('alice sad', sprite_highlight('alice'))
+    image alice sayA = At('alice say', sprite_highlight('alice'))
 
     # Music
     define audio.myambient = "music/ambient_down.ogg"
