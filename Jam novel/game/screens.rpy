@@ -368,6 +368,7 @@ screen main_menu():
         hover "gui/menu_hover.png"
 
         hotspot(515, 304, 200, 77) action Start()
+        hotspot(120, 360, 74, 70) action ShowMenu("preferences")
         hotspot(533, 381, 214, 73) action ShowMenu("load")
         hotspot(557, 461, 183, 73) action ShowMenu("about")
         hotspot(571, 538, 242, 72) action ShowMenu("help")
