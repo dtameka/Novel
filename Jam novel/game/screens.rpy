@@ -219,7 +219,7 @@ style choice_button_text is button_text
 
 style choice_vbox:
     xalign 0.5
-    ypos 405
+    ypos 500
     yanchor 0.5
 
     spacing gui.choice_spacing
@@ -348,33 +348,31 @@ style navigation_button_text:
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#main-menu
 
+
 screen main_menu():
 
     ## Этот тег гарантирует, что любой другой экран с тем же тегом будет
     ## заменять этот.
     tag menu
 
+    # Параллакс эффект для главного меню
+    add TrackCursor("gui/main_menu_l0.png", 160)
+    add TrackCursor("gui/main_menu_l1.png", 140)
+    add TrackCursor("gui/main_menu_l2.png", 100)
+
     add gui.main_menu_background
+    
+    # Мапа для кастомного главного меню
+    imagemap:
+        idle "gui/menu_idle.png"
+        hover "gui/menu_hover.png"
 
-    ## Эта пустая рамка затеняет главное меню.
-    frame:
-        style "main_menu_frame"
-
-    ## Оператор use включает отображение другого экрана в данном. Актуальное
-    ## содержание главного меню находится на экране навигации.
-    use navigation
-
-    if gui.show_name:
-
-        vbox:
-            style "main_menu_vbox"
-
-            text "[config.name!t]":
-                style "main_menu_title"
-
-            text "[config.version]":
-                style "main_menu_version"
-
+        hotspot(515, 304, 200, 77) action Start()
+        hotspot(120, 360, 74, 70) action ShowMenu("preferences")
+        hotspot(533, 381, 214, 73) action ShowMenu("load")
+        hotspot(557, 461, 183, 73) action ShowMenu("about")
+        hotspot(571, 538, 242, 72) action ShowMenu("help")
+        hotspot(170, 517, 152, 143) action Quit(confirm=True)
 
 style main_menu_frame is empty
 style main_menu_vbox is vbox
@@ -385,8 +383,6 @@ style main_menu_version is main_menu_text
 style main_menu_frame:
     xsize 420
     yfill True
-
-    background "gui/overlay/main_menu.png"
 
 style main_menu_vbox:
     xalign 1.0
@@ -418,10 +414,12 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
 
     style_prefix "game_menu"
 
-    if main_menu:
-        add gui.main_menu_background
-    else:
-        add gui.game_menu_background
+    # Параллакс эффект для быстрого меню
+    add TrackCursor("gui/main_menu_l0.png", 160)
+    add TrackCursor("gui/main_menu_l1.png", 140)
+    add TrackCursor("gui/main_menu_l2.png", 120)
+
+    add gui.main_menu_background
 
     frame:
         style "game_menu_outer_frame"
@@ -479,7 +477,7 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
 
         action Return()
 
-    label title
+    # label title
 
     if main_menu:
         key "game_menu" action ShowMenu("main_menu")
@@ -786,6 +784,11 @@ screen preferences():
 
                             if config.sample_sound:
                                 textbutton _("Тест") action Play("sound", config.sample_sound)
+                        
+                        label _("Громкость фона")
+
+                        hbox:
+                            bar value Preference("mixer ambient volume")
 
 
                     if config.has_voice:
@@ -1306,7 +1309,7 @@ screen nvl(dialogue, items=None):
         has vbox:
             spacing gui.nvl_spacing
 
-        ## Показывает диалог или в vpgrid, или в vbox.
+        ## Displays dialogue in either a vpgrid or the vbox.
         if gui.nvl_height:
 
             vpgrid:
@@ -1319,8 +1322,8 @@ screen nvl(dialogue, items=None):
 
             use nvl_dialogue(dialogue)
 
-        ## Показывает меню, если есть. Меню может показываться некорректно, если
-        ## config.narrator_menu установлено на True.
+        ## Displays the menu, if given. The menu may be displayed incorrectly if
+        ## config.narrator_menu is set to True, as it is above.
         for i in items:
 
             textbutton i.caption:

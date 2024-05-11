@@ -12,7 +12,7 @@
 ##
 ## Символы "_()", окружающие название, отмечают его как пригодное для перевода.
 
-define config.name = _("Jam novel")
+define config.name = _("Sacred Trek")
 
 
 ## Определяет, показывать ли заголовок, данный выше, на экране главного меню.
@@ -37,7 +37,7 @@ define gui.about = _p("""
 ## постройке дистрибутивов. Оно должно содержать текст формата ASCII и не должно
 ## содержать пробелы, двоеточия и точки с запятой.
 
-define build.name = "Jamnovel"
+define build.name = "Sacret"
 
 
 ## Звуки и музыка ##############################################################
@@ -48,7 +48,11 @@ define build.name = "Jamnovel"
 
 define config.has_sound = True
 define config.has_music = True
-define config.has_voice = True
+define config.has_voice = False
+
+define config.default_music_volume = 0.5
+
+define config.default_sfx_volume = 0.8
 
 
 ## Чтобы разрешить игроку тестировать громкость на звуковом или голосовом
@@ -62,7 +66,7 @@ define config.has_voice = True
 ## проигрываться в главном меню. Этот файл продолжит проигрываться во время
 ## игры, если не будет остановлен, или не начнёт проигрываться другой аудиофайл.
 
-# define config.main_menu_music = "main-menu-theme.ogg"
+define config.main_menu_music = "music/main-menu-theme.ogg"
 
 
 ## Переходы ####################################################################
@@ -84,12 +88,16 @@ define config.intra_transition = dissolve
 
 ## Переход, используемый после загрузки слота сохранения.
 
-define config.after_load_transition = None
+define config.after_load_transition = dissolve
 
 
 ## Используется при входе в главное меню после того, как игра закончится.
 
-define config.end_game_transition = None
+define config.end_game_transition = dissolve
+
+define config.end_splash_transition = dissolve
+
+
 
 
 ## Переменная, устанавливающая переход, когда старт игры не существует. Вместо
@@ -108,6 +116,8 @@ define config.end_game_transition = None
 
 define config.window = "auto"
 
+#define config.empty_window = nvl_show_core
+
 
 ## Переходы, используемые при показе и скрытии диалогового окна
 
@@ -121,7 +131,7 @@ define config.window_hide_transition = Dissolve(.2)
 ## в то время как любая другая цифра — это количество символов, печатаемых в
 ## секунду.
 
-default preferences.text_cps = 0
+default preferences.text_cps = 40
 
 
 ## Стандартная задержка авточтения. Большие значения означают долгие ожидания, а
@@ -160,6 +170,9 @@ define config.window_icon = "gui/window_icon.png"
 ## проекта.
 
 init python:
+
+    renpy.music.register_channel("ambient", loop=True, mixer='ambient')
+
 
     ## Следующие функции берут образцы файлов. Образцы файлов не учитывают
     ## регистр и соответствующе зависят от директории проекта (base), с или без
