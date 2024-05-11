@@ -358,7 +358,7 @@ screen main_menu():
     # Параллакс эффект для главного меню
     add TrackCursor("gui/main_menu_l0.png", 160)
     add TrackCursor("gui/main_menu_l1.png", 140)
-    add TrackCursor("gui/main_menu_l2.png", 120)
+    add TrackCursor("gui/main_menu_l2.png", 100)
 
     add gui.main_menu_background
     
@@ -373,6 +373,12 @@ screen main_menu():
         hotspot(557, 461, 183, 73) action ShowMenu("about")
         hotspot(571, 538, 242, 72) action ShowMenu("help")
         hotspot(170, 517, 152, 143) action Quit(confirm=True)
+
+    vbox:
+            style "main_menu_vbox"
+
+            text "[config.name!t]":
+                style "main_menu_title"
   
 
 style main_menu_frame is empty
