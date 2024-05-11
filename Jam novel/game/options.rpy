@@ -51,7 +51,8 @@ define config.has_music = True
 define config.has_voice = False
 
 define config.default_music_volume = 0.5
-define config.default_sfx_volume = 0.5
+
+define config.default_sfx_volume = 0.8
 
 
 ## Чтобы разрешить игроку тестировать громкость на звуковом или голосовом
@@ -130,7 +131,7 @@ define config.window_hide_transition = Dissolve(.2)
 ## в то время как любая другая цифра — это количество символов, печатаемых в
 ## секунду.
 
-default preferences.text_cps = 0
+default preferences.text_cps = 40
 
 
 ## Стандартная задержка авточтения. Большие значения означают долгие ожидания, а
@@ -171,13 +172,7 @@ define config.window_icon = "gui/window_icon.png"
 init python:
 
     renpy.music.register_channel("ambient", loop=True, mixer='ambient')
-    renpy.music.register_channel("sounds", loop=False, mixer='sounds')
-    renpy.music.register_channel("ambient2", loop=True, mixer='ambient2')
 
-    renpy.music.set_volume(0.5, delay=0, channel='ambient')
-    renpy.music.set_volume(1.0, delay=0, channel='ambient2')
-    renpy.music.set_volume(0.5, delay=0, channel='sounds')
-    
 
     ## Следующие функции берут образцы файлов. Образцы файлов не учитывают
     ## регистр и соответствующе зависят от директории проекта (base), с или без

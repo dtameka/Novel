@@ -28,6 +28,7 @@ label brief: # Бриф
     $ mouse_parallax.set((-2, -5, "l0"), (-4, -5, "l1"), (-8, -5, "l2"), (-12, -5, "l3"), (-17, -5, "l4"))
     $ showp("bg antenna_l0", "bg antenna_l1", "bg antenna_l2", "bg antenna_l3", "bg antenna_l4") 
     with ImageDissolve("transitions/wet.webp", 4.0, 80)
+    play sound "music/radio_bip_bup.ogg" fadein 2.0
     
     '''
     {fi=[0]-[2]-[0]}Мы стали отправлять сигналы в надежде быть услышанными.{/fi} 
@@ -49,18 +50,19 @@ label brief: # Бриф
 
     {fi=[0]-[2]-[0]}Пришёл к нам сам...{/fi}
     '''
-    stop ambient fadeout 2.0
+    stop music fadeout 2.0
     $ scenep()
 
 
 label prologue_01: # Пробуждение
-    with ImageDissolve("transitions/01.webp", 4.0, 50)
+    with ImageDissolve("transitions/01.webp", 4.0, 70)
     show bg black
     pause(1.5)
     hide bg black
     with Fade(0.5, 0.5, 0.5)
     
     show bg morgue_black with eyeopen
+    play music "music/ambient_morgue.ogg"
     player_base '''
     {fi=[20]-[3]-[20]}Мг-мм-мм...{/fi}
 
@@ -84,7 +86,7 @@ label prologue_01: # Пробуждение
                     "Вы достаете какой-то билет"
                     
                     $ scenep()
-                    play sounds "music/sound_paper.ogg" fadeout 1.0
+                    play sound "music/sound_paper.ogg" fadeout 1.0
                     $ showp(("hand jelly", offscreendown))
 
                     window auto hide
@@ -112,7 +114,7 @@ label prologue_01: # Пробуждение
                 else:
                     "Вы нащупываете какой-то листок бумаги"
                     $ scenep()
-                    play sounds "music/sound_paper.ogg" fadeout 1.0
+                    play sound "music/sound_paper.ogg" fadeout 1.0
                     $ showp("hand ticket_light_off")
                     with dissolve
                     player_base "{fi=[0]-[1]-[0]}Черт, ничего не видно!{/fi}"
@@ -125,8 +127,9 @@ label prologue_01: # Пробуждение
                 $ check_ticket = False
                 $ renpy.block_rollback()
                 "В этой темноте, вы нащупываете выключатель."
-                play sounds "music/sound_click_lamp.ogg"
-                play ambient2 "music/lamp_gool.ogg"
+                play sound "music/sound_click_lamp.ogg"
+                play ambient "music/lamp_gool.ogg"
+                play music "music/ambient_morgue_2.ogg"
                 scene bg morgue_light with Fade(0.2, 1.0, 0.5, color="#ffffff")
                 show dust_left
                 show dust_right   
@@ -143,12 +146,12 @@ label prologue_01: # Пробуждение
     hide dust_right
     $ scenep()
     with dissolve
-    stop ambient2 fadeout 5.0
+    stop ambient fadeout 5.0
     jump prologue_flashback
 
 label prologue_flashback: # Воспоминания о том как прилетели пришельцы 
     window hide
-    play ambient "music/city_noise.ogg"
+    play music "music/city_noise.ogg"
     show bg city_without_jelly with ImageDissolve("transitions/005.webp", 7.0, 80)
 
 
@@ -180,12 +183,12 @@ label prologue_flashback: # Воспоминания о том как приле
 
     Так люди стали фанатеть от пришельцев.
     '''
-    stop ambient fadeout 3.0
+    stop music fadeout 3.0
     
 
 label prologue_02:
 
-    play ambient2 "music/lamp_gool.ogg" fadein 4.0
+    play ambient "music/lamp_gool.ogg" fadein 4.0
     scene bg morgue_light with ImageDissolve("transitions/005.webp", 5.0, 80)
 
     show dust_left
@@ -202,7 +205,7 @@ label prologue_02:
             "Проверить карманы" if not check_pockets:
                 $ renpy.block_rollback()
                 "В карманах теперь пусто, положу пока билет обратно в жилетку"
-                play sounds "music/sound_paper_end.ogg" fadeout 1.0
+                play sound "music/sound_paper_end.ogg" fadeout 1.0
                 window auto hide
                 show hand jelly onlayer l0:
                     subpixel True
@@ -219,7 +222,7 @@ label prologue_02:
                 $ exit = True
                 $ renpy.block_rollback()
                 if not check_pockets:
-                    play sounds "music/sound_paper_end.ogg" fadeout 1.0
+                    play sound "music/sound_paper_end.ogg" fadeout 1.0
                     window auto hide
                     show hand jelly onlayer l0 :
                         subpixel True
@@ -247,7 +250,7 @@ label prologue_02:
                 show bg katalka_without_scalpel
                 
                 $ showp(("hand with_scalpel", offscreendown_end))
-                play sounds "music/take_knife_new.ogg"
+                play sound "music/take_knife_new.ogg"
 
                 window auto hide
                 show hand with_scalpel onlayer l0:
@@ -285,13 +288,14 @@ label prologue_02:
             
     # Фон: светлый длинный, но заброшенный коридор, который должен нагонять не мрачняк, в надежду на возрождение 
     $ scenep()
-    stop ambient2 fadeout 2.0
+    stop ambient fadeout 2.0
     scene bg corridor_hight with dissolve
+    play music "music/pre_end.ogg"
     "Перед вашим взором открывается коридор."
     player_base "{fi=[0]-[1]-[0]}Какой длинный коридор...{/fi}"
     
     window auto hide
-    play ambient2 "music/staps.ogg"
+    play ambient "music/staps.ogg"
     camera:
         subpixel True 
         parallel:
@@ -306,7 +310,7 @@ label prologue_02:
     with Pause(5.01)
     camera:
         ypos 0 zoom 1.1
-    stop ambient2
+    stop ambient
     window auto show
 
     show alice with dissolve
@@ -355,6 +359,7 @@ label prologue_02:
 
     {fi=[0]-[0.5]-[0]}Я покажу тебе как всё устроено на нашей базе.{/fi}
     '''
+    play music "music/end_prologue_ambient.ogg"
     # Конец
     scene bg white with eyeopen
     pause 2.0
