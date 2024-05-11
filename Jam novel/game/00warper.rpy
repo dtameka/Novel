@@ -63,22 +63,22 @@
     @renpy.atl_warper
     def spring1(x):
         from math import exp, cos
-        rho = 5 # 減衰率
-        mu  = 30# 角振動数
+        rho = 5
+        mu  = 30
         return (1.0 - exp(-rho * x) * cos(mu * x)) / (1.0 - exp(-rho) * cos(mu))
 
     @renpy.atl_warper
     def spring2(x):
         from math import exp, cos
-        rho = 5 # 減衰率
-        mu  = 20# 角振動数
+        rho = 5
+        mu  = 20
         return (1.0 - exp(-rho * x) * cos(mu * x)) / (1.0 - exp(-rho) * cos(mu))
 
     @renpy.atl_warper
     def spring3(x):
         from math import exp, cos
-        rho = 5 # 減衰率
-        mu  = 10# 角振動数
+        rho = 5
+        mu  = 10
         return (1.0 - exp(-rho * x) * cos(mu * x)) / (1.0 - exp(-rho) * cos(mu))
 
     @renpy.atl_warper
@@ -127,7 +127,6 @@
             return 1.0
         return 1.0 - (1.0 - x)**6
 
-    #互換性のために残しておく
     @renpy.atl_warper
     def power_out_time_warp_real(x):
         if x >= 1.0:

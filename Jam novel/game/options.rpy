@@ -37,7 +37,7 @@ define gui.about = _p("""
 ## постройке дистрибутивов. Оно должно содержать текст формата ASCII и не должно
 ## содержать пробелы, двоеточия и точки с запятой.
 
-define build.name = "Jamnovel"
+define build.name = "Sacret"
 
 
 ## Звуки и музыка ##############################################################
@@ -48,7 +48,10 @@ define build.name = "Jamnovel"
 
 define config.has_sound = True
 define config.has_music = True
-define config.has_voice = True
+define config.has_voice = False
+
+define config.default_music_volume = 0.5
+define config.default_sfx_volume = 0.5
 
 
 ## Чтобы разрешить игроку тестировать громкость на звуковом или голосовом
@@ -62,7 +65,7 @@ define config.has_voice = True
 ## проигрываться в главном меню. Этот файл продолжит проигрываться во время
 ## игры, если не будет остановлен, или не начнёт проигрываться другой аудиофайл.
 
-# define config.main_menu_music = "main-menu-theme.ogg"
+define config.main_menu_music = "music/main-menu-theme.ogg"
 
 
 ## Переходы ####################################################################
@@ -166,6 +169,15 @@ define config.window_icon = "gui/window_icon.png"
 ## проекта.
 
 init python:
+
+    renpy.music.register_channel("ambient", loop=True, mixer='ambient')
+    renpy.music.register_channel("sounds", loop=False, mixer='sounds')
+    renpy.music.register_channel("ambient2", loop=True, mixer='ambient2')
+
+    renpy.music.set_volume(0.5, delay=0, channel='ambient')
+    renpy.music.set_volume(1.0, delay=0, channel='ambient2')
+    renpy.music.set_volume(0.5, delay=0, channel='sounds')
+    
 
     ## Следующие функции берут образцы файлов. Образцы файлов не учитывают
     ## регистр и соответствующе зависят от директории проекта (base), с или без
