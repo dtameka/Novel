@@ -86,7 +86,7 @@ label prologue_01: # Пробуждение
             "Проверить карманы" if not check_ticket:
                 $ renpy.block_rollback()
                 if light_on:                  
-                    "Вы достаете какой-то билет"
+                    "Вы достаете какой-то билет."
                     
                     $ scenep()
                     play sound "music/sound_paper.ogg" fadeout 1.0
@@ -105,17 +105,17 @@ label prologue_01: # Пробуждение
                     with dissolve
                     player_base "{fi=[0]-[1]-[0]}Кажется я начинаю вспоминать...{/fi}"
                     player_base "Точно!" with vpunch
-                    "Воспоминания нахлынули словно цунами. {fi=[0]-[2]-[0]}Кажется у вас опять начинает болеть голова...{/fi}"
+                    "Воспоминания нахлынули словно цунами. {fi=[0]-[2]-[0]}\nКажется у вас опять начинает болеть голова...{/fi}"
                     player_base "{glitch=10}Ай-яй...{/glitch} еще не отошел." 
 
-                    player_base "О чем это я... а, ну конечно"
+                    player_base "О чем это я... а, ну конечно."
 
-                    "Ваш взгляд наконец сфокусировался на билете"
+                    "Ваш взгляд наконец сфокусировался на билете."
 
                     "Вы вспоминаете как выиграли круиз на корабле этих, заполонивших города, инопланетян, похожих на медуз."
                     $ exit = True
                 else:
-                    "Вы нащупываете какой-то листок бумаги"
+                    "Вы нащупываете какой-то листок бумаги."
                     $ scenep()
                     play sound "music/sound_paper.ogg" fadeout 1.0
                     $ showp("hand ticket_light_off")
@@ -211,7 +211,7 @@ label prologue_02:
         menu:
             "Проверить карманы" if not check_pockets:
                 $ renpy.block_rollback()
-                "В карманах теперь пусто. Уберу пока билет обратно"
+                "В карманах теперь пусто. Уберу пока билет обратно."
                 play sound "music/sound_paper_end.ogg" fadeout 1.0
                 window auto hide
                 show hand jelly onlayer l0:
