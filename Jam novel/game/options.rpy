@@ -91,6 +91,8 @@ define config.after_load_transition = dissolve
 
 define config.end_game_transition = dissolve
 
+define config.end_splash_transition = dissolve
+
 
 
 
