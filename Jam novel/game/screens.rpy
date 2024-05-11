@@ -317,7 +317,7 @@ screen navigation():
 
             textbutton _("Главное меню") action MainMenu()
 
-        textbutton _("Об игре") action ShowMenu("about")
+        textbutton _("О нас") action ShowMenu("about")
 
         if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
 
@@ -535,9 +535,9 @@ style return_button:
     yoffset -45
 
 
-## Экран Об игре ###############################################################
+## Экран О нас ###############################################################
 ##
-## Этот экран показывает авторскую информацию об игре и Ren'Py.
+## Этот экран показывает авторскую информацию о нас и Ren'Py.
 ##
 ## В этом экране нет ничего особенного, и он служит только примером того, каким
 ## можно сделать свой экран.
@@ -548,7 +548,7 @@ screen about():
 
     ## Этот оператор включает игровое меню внутрь этого экрана. Дочерний vbox
     ## включён в порт просмотра внутри экрана игрового меню.
-    use game_menu(_("Об игре"), scroll="viewport"):
+    use game_menu(_("О нас"), scroll="viewport"):
 
         style_prefix "about"
 
