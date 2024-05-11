@@ -39,7 +39,7 @@ label brief: # Бриф
 
     {fi=[0]-[2]-[0]}И нас услышали...{/fi}
     '''
-
+    stop sound
     $ scenep()
     $ mouse_parallax.set((0, 0, "l0"), (-20, -10, "l1"), (0, 0, "l2"))
     $ showp("bg ship_l0", "bg stars_l2", "bg ship_l1") 
